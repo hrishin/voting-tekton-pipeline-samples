@@ -1,0 +1,28 @@
+apiVersion: tekton.dev/v1alpha1
+kind: TaskRun
+metadata:
+  name: voting-ui-deploy-run
+spec:
+  inputs:
+    resources:
+      - name: source-repo
+        resourceRef:
+          name: cd-git-src
+
+      - name: new-image
+        resourceRef:
+          name: voting-ui-image
+
+    params:
+      - name: yamlFile
+        value: "voting-ui/deployment-manifests/deployment.yaml"
+
+      - name: yamlImagePath
+        value: "spec.template.spec.containers[0].image"
+
+      - name: yamls
+        value: "voting-ui/deployment-manifests"
+
+  serviceAccount: docker-auth-sa
+  taskRef:
+    name: generic-deploy-task

@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1alpha1
 kind: TaskRun
 metadata:
-  name: voting-deploy-taskrun
+  name: basic-api-deploy-run
 spec:
   inputs:
     resources:
@@ -11,4 +11,4 @@ spec:
 
   serviceAccount: docker-auth-sa
   taskRef:
-    name: voting-deploy-task
+    name: basic-api-deploy

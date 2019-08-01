@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  creationTimestamp: null
   labels:
     app: voting-ui
   name: voting-ui
 spec:
+  type: NodePort
   ports:
   - port: 8080
     protocol: TCP
