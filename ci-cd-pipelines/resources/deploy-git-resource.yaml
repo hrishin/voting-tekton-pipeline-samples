@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1alpha1
 kind: PipelineResource
 metadata:
-  name: deploy-git
+  name: cd-git-src
 spec:
   type: git
   params:

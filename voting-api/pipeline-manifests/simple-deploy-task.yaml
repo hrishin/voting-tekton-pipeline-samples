@@ -1,0 +1,18 @@
+apiVersion: tekton.dev/v1alpha1
+kind: Task
+metadata:
+  name: voting-deploy-task
+spec:
+  inputs:
+    resources:
+    - name: source-repo
+      type: git
+  
+  steps:
+  - name: deploy-voting-api
+    image: lachlanevenson/k8s-kubectl
+    command: ["kubectl"]
+    args:
+    - apply
+    - -f
+    - /workspace/source-repo/voting-api/deployment-manifests
