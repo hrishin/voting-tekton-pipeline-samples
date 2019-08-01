@@ -19,7 +19,7 @@ spec:
 
   outputs:
     resources:
-      - name: votingApiImage
+      - name: destImage
         type: image
 
   steps:
@@ -30,4 +30,4 @@ spec:
       args:
         - --context=/workspace/source-repo/${inputs.params.pathToContext}
         - --dockerfile=/workspace/source-repo/${inputs.params.pathToDockerFile}
-        - --destination=${outputs.resources.votingApiImage.url}
+        - --destination=${outputs.resources.destImage.url}
