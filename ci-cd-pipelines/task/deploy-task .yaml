@@ -1,18 +1,36 @@
 apiVersion: tekton.dev/v1alpha1
 kind: Task
 metadata:
-  name: deploy-task
+  name: voting-deploy-task
 spec:
   inputs:
     resources:
     - name: workspace-git
       targetPath: /
       type: git
+    - name: vote-image
+      type: image
     params:
+    - name: yamlFile
+      description: The yaml file to update
+    - name: yamlImagePath
+      description: A tree path for "image" attribute in yaml file
     - name: yamls
-      description: the yaml(s) to apply
+      description: The yaml(s) to apply
+  
   steps:
-  - name: oc
+  - name: replace-image
+    image: mikefarah/yq
+    command: ["yq"]
+    args:
+    - "w"
+    - "-i"
+    - "-d1"
+    - "${inputs.params.yamlFile}"
+    - "${inputs.params.yamlImagePath}"
+    - "${inputs.resources.vote-image.url}"
+      
+  - name: deploy resources
     image: quay.io/openshift-pipeline/openshift-cli
     command: ["/usr/local/bin/oc"]
     args:
