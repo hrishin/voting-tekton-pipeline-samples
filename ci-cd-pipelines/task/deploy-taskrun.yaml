@@ -1,0 +1,17 @@
+apiVersion: tekton.dev/v1alpha1
+kind: TaskRun
+metadata:
+  name: voting-deploy-taskrun
+spec:
+  inputs:
+    resources:
+    - name: workspace-git
+      resourceRef:
+        name: deploy-git
+    - name: vote-image
+      resourceRef:
+        name: vote-image-resource
+  serviceAccount: vote-deploy
+  taskRef:
+    name: voting-deploy-task
+  

@@ -1,0 +1,19 @@
+apiVersion: tekton.dev/v1alpha1
+kind: Task
+metadata:
+  name: voting-deploy-task
+spec:
+  inputs:
+    resources:
+    - name: workspace-git
+      targetPath: /
+      type: git
+  
+  steps:
+  - name: deploy resources
+    image: quay.io/openshift-pipeline/openshift-cli
+    command: ["/usr/local/bin/oc"]
+    args:
+    - apply
+    - -f
+    - ./voting-ui/deployment-config
