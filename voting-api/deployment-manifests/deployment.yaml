@@ -16,7 +16,7 @@ spec:
         app: voting-api
     spec:
       containers:
-      - image: voting-api:latest
+      - image: nikhilvep/voting-api:latest
         name: voting-api
         ports:
         - containerPort: 8080
