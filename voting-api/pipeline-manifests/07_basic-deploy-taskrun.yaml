@@ -8,6 +8,7 @@ spec:
     - name: source-repo
       resourceRef:
         name: cd-git-src
+
   serviceAccount: docker-auth-sa
   taskRef:
     name: voting-deploy-task
