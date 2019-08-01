@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1alpha1
 kind: Task
 metadata:
-  name: voting-deploy-task
+  name: basic-ui-deploy
 spec:
   inputs:
     resources:
@@ -10,7 +10,7 @@ spec:
       type: git
   
   steps:
-  - name: deploy resources
+  - name: deploy-resources
     image: quay.io/openshift-pipeline/openshift-cli
     command: ["/usr/local/bin/oc"]
     args:

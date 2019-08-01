@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1alpha1
 kind: Task
 metadata:
-  name: voting-deploy-task
+  name: basic-api-deploy
 spec:
   inputs:
     resources:
