@@ -1,9 +1,9 @@
 apiVersion: tekton.dev/v1alpha1
 kind: PipelineResource
 metadata:
-  name: voting-api-app
+  name: voting-ui-image
 spec:
   type: image
   params:
     - name: url
-      value: docker.io/nikhilvep/voting-api
+      value: docker.io/nikhilvep/voting-ui

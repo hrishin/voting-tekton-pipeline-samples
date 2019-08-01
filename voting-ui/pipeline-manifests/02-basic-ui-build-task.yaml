@@ -1,0 +1,19 @@
+apiVersion: tekton.dev/v1alpha1
+kind: Task
+metadata:
+  name:  basic-ui-build
+spec:
+  inputs:
+    resources:
+      - name: source-repo
+        type: git
+
+  steps:
+    - name: build-and-push
+      image: gcr.io/kaniko-project/executor
+      command:
+        - /kaniko/executor
+      args:
+        - --context=/workspace/source-repo/src/
+        - --dockerfile=/workspace/source-repo/src/Dockerfile
+        - --destination=docker.io/nikhilvep/voting-ui

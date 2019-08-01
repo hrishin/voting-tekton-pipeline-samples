@@ -1,0 +1,13 @@
+apiVersion: tekton.dev/v1alpha1
+kind: TaskRun
+metadata:
+  name: basic-ui-buildrun
+spec:
+  inputs:
+    resources:
+      - name: source-repo
+        resourceRef:
+          name: voting-ui-src
+  serviceAccount: docker-auth-sa
+  taskRef:
+    name: basic-ui-build

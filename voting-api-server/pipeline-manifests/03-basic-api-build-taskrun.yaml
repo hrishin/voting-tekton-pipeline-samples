@@ -1,0 +1,13 @@
+apiVersion: tekton.dev/v1alpha1
+kind: TaskRun
+metadata:
+  name: basic-api-build-run
+spec:
+  inputs:
+    resources:
+      - name: source-repo
+        resourceRef:
+          name: voting-api-src
+  serviceAccount: docker-auth-sa
+  taskRef:
+    name: basic-api-build
