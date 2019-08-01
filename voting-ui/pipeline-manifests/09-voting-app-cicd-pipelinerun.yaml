@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1alpha1
 kind: PipelineRun
 metadata:
-  name: voting-api-pipelinerun
+  name: voting-app-pipelinerun
 spec:
   serviceAccount: docker-auth-sa
   pipelineRef:
@@ -9,11 +9,11 @@ spec:
   resources:
     - name: pipeline-source-repo
       resourceRef:
-        name: voting-api-src
+        name: voting-ui-src
 
     - name: pipeline-built-image
       resourceRef:
-        name: voting-api-image
+        name: voting-ui-image
 
     - name: pipeline-source-repo-cicd
       resourceRef:
@@ -21,17 +21,17 @@ spec:
 
   params:
     - name: p-pathToDockerFile
-      value: Dockerfile
+      value: src/Dockerfile
 
     - name: p-pathToContext
-      value: .
+      value: src/
 
     - name: p-yamlFile
-      value: "voting-api/deployment-manifests/deployment.yaml"
+      value: "voting-ui/deployment-manifests/deployment.yaml"
 
     - name: p-yamlImagePath
       value: "spec.template.spec.containers[0].image"
 
     - name: p-yamls
-      value: "voting-api/deployment-manifests"
+      value: "voting-ui/deployment-manifests"
 
