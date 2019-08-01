@@ -3,12 +3,12 @@ kind: Route
 metadata:
   creationTimestamp: null
   labels:
-    app: voting-app
-  name: voting-app
+    app: voting-ui
+  name: voting-ui
 spec:
   port:
     targetPort: 8080
   to:
     kind: Service
-    name: voting-app
+    name: voting-ui
     weight: 100

@@ -3,12 +3,12 @@ kind: Service
 metadata:
   creationTimestamp: null
   labels:
-    app: voting-app
-  name: voting-app
+    app: voting-ui
+  name: voting-ui
 spec:
   ports:
   - port: 8080
     protocol: TCP
     targetPort: 8080
   selector:
-    app: voting-app
+    app: voting-ui
