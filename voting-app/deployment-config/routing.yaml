@@ -1,0 +1,14 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  creationTimestamp: null
+  labels:
+    app: voting-app
+  name: voting-app
+spec:
+  port:
+    targetPort: 8080
+  to:
+    kind: Service
+    name: voting-app
+    weight: 100
