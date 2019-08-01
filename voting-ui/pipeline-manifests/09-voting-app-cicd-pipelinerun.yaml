@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1alpha1
 kind: PipelineRun
 metadata:
-  name: voting-app-pipelinerun
+  name: voting-ui-pipelinerun
 spec:
   serviceAccount: docker-auth-sa
   pipelineRef:
